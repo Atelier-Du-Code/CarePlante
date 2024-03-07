@@ -9,27 +9,28 @@ export const postTest = (req, res) => {
 }
 
 export const addPlante = async (req, res) => {
-    const plante = new PlanteModele(req.body);
-    await plante.save();
-    res.send(plante);      
+    const add = new PlanteModele(req.body);
+    await add.save();
+    res.json(add);      
 }
 
+//Récupérer toutes les plantes
 export const getPlantes = async (req, res) => {
     const plantes = await PlanteModele.find({})
-    res.send(plantes)
+    res.json(plantes);
 }
 
-
+//Récupérer une plante
 export const getPlante = async (req, res) => {
-    const plantes = await PlanteModele.find({_id: req.params.id})
-    res.send(plantes)
+    const plante = await PlanteModele.find({_id: req.params.id})
+    res.send(plante)
 }
 
 
 export const updatePlante = async (req, res) => {   
-    const plante = await PlanteModele.findByIdAndUpdate(req.params.id, req.body)
-    await plante.save()
-    res.send(plante)
+    const udatePlante = await PlanteModele.findByIdAndUpdate(req.params.id, req.body)
+    await udatePlante.save()
+    res.send(udatePlante)
 }
 
 

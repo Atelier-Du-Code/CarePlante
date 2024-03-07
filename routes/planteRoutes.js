@@ -11,15 +11,20 @@ router.get('/', (_ , res) => {
 router.get('/test', getTest)
 router.post('/test', postTest)
 
-router.get('/plantes', catchErrors(getPlantes))
-router.get('/plante/:id', catchErrors(getPlante))
+//Récupérer toutes les plantes
+router.get('/api/plantes/plantes', catchErrors(getPlantes))
 
-router.post('/plante', catchErrors(addPlante))
+//Récupérer une plante
+router.get('/api/plantes/plante/:id', catchErrors(getPlante))
 
-router.patch('/plante/:id', catchErrors(updatePlante))
+//Ajouter une plante
+router.post('/api/plantes/plante', catchErrors(addPlante))
 
+//Mettre à jour d'une plante
+router.patch('/api/plantes/plante/:id', catchErrors(updatePlante))
 
-router.delete('/plante/:id', catchErrors(deletePlante))
+//Supprimer une plante
+router.delete('/api/plantes/plante/:id', catchErrors(deletePlante))
 
 
 export default router
