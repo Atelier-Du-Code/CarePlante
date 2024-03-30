@@ -1,9 +1,11 @@
 import express from 'express'
 import cors from 'cors';
-import routes from './routes/planteRoutes.js'
 import mongoose from 'mongoose'
 
 import planteRoutes from './routes/planteRoutes.js';
+import environnementRoutes from './routes/environnementRoutes.js';
+import astuceRoutes from './routes/astuceRoutes.js';
+import expositionRoutes from './routes/expositionRoutes.js';
 
 //Récupération des variables d'environnement
 import dotenv from 'dotenv'
@@ -20,11 +22,13 @@ app.use(cors({
   }));
 
 app.use(express.json())
-app.use(routes)
+
 
 //Middleware pour les routes API
 app.use('/api/plantes', planteRoutes);
-
+app.use('/api/environnements', environnementRoutes);
+app.use('/api/astuces', astuceRoutes);
+app.use('/api/exposition', expositionRoutes);
 
 mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,

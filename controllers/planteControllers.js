@@ -1,12 +1,5 @@
 import PlanteModele from '../models/planteModele.js'
 
-export const getTest = (_, res) => {
-    res.send('hello les hardcodeurs pouet pouet')
-}
-
-export const postTest = (req, res) => {
-    res.send(req.body)
-}
 
 export const addPlante = async (req, res) => {
     const add = new PlanteModele(req.body);

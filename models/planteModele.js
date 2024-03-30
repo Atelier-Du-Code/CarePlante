@@ -43,6 +43,11 @@ const PlanteSchema = new mongoose.Schema({
         ref: 'Parasite',
         required: true,
     },
+    astuce: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Astuce',
+        required: true,
+    },
     photo: {
         type: String,
         required: true,
