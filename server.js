@@ -1,9 +1,9 @@
-import express from 'express'
+import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 import planteRoutes from './routes/planteRoutes.js';
-import environnementRoutes from './routes/environnementRoutes.js';
+import environnementRoutes from './routes/environnementRoutes.js'
 import astuceRoutes from './routes/astuceRoutes.js';
 import expositionRoutes from './routes/expositionRoutes.js';
 

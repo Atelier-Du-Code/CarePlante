@@ -1,7 +1,7 @@
 //getExposition, modifierExpositionPlante, supprimerExpositionPlante
-import ExpositionModele from "../models/expositionModele";
+import ExpositionModele from "../models/expositionModele.js";
 import Plante_exposition_Modele from "../models/plantes/plante_exposition_Modele.js"
-import PlanteModele from "../models/planteModele";
+import PlanteModele from "../models/planteModele.js";
 
 //Récupération de l'exposition d'une plante
 export const getExpositions = async (req, res) => {

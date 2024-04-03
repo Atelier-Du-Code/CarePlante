@@ -1,5 +1,5 @@
-import AstuceModele from "../models/astuceModele";
-import PlanteAstuceModele from '../models/planteAstuceModele.js';
+import AstuceModele from "../models/astuceModele.js";
+import PlanteAstuceModele from '../models/plantes/plante_astuce_Modele.js';
 
 
 //Récupération des astuces d'une plante

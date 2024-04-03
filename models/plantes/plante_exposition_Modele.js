@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 const PlanteExpositionSchema = new mongoose.Schema({
     plante: {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,3 +12,4 @@ const PlanteExpositionSchema = new mongoose.Schema({
 });
 
 const PlanteExpositionModele = mongoose.model('PlanteExposition', PlanteExpositionSchema);
+export default PlanteExpositionModele;
