@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 import planteRoutes from './routes/planteRoutes.js';
+import planteEnvironnementRoutes from './routes/planteEnvironnementRoutes.js';
 import environnementRoutes from './routes/environnementRoutes.js'
 import astuceRoutes from './routes/astuceRoutes.js';
 import expositionRoutes from './routes/expositionRoutes.js';
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use('/api/plantes', planteRoutes);
 app.use('/api/environnements', environnementRoutes);
 app.use('/api/astuces', astuceRoutes);
+app.use('/api/planteEnvironnement', planteEnvironnementRoutes);
 app.use('/api/exposition', expositionRoutes);
 
 mongoose.connect(process.env.MONGODB, {

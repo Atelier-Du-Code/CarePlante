@@ -48,6 +48,12 @@ const PlanteSchema = new mongoose.Schema({
         ref: 'Astuce',
         required: true,
     },
+
+    interieur_exterieur: {
+        type: String,
+        required: true,
+    },
+
     photo: {
         type: String,
         required: true,

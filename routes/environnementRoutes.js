@@ -1,6 +1,6 @@
 import express from 'express';
 import { catchErrors } from '../helpers.js';
-import { getEnvironnements, getEnvironnement, getExpositionsPlante, ajouterEnvironnementPlante, modifierEnvironnementPlante, supprimerEnvironnementPlante, addEnvironnement} from '../controllers/environnementController.js';
+import { getEnvironnements, getEnvironnement, addEnvironnement, updateEnvironnement, deleteEnvironnement} from '../controllers/environnementController.js';
 
 const router = express.Router();
 
@@ -16,19 +16,10 @@ router.post('/addEnvironnement', catchErrors(addEnvironnement))
 router.get('/environnement/:environnementId', catchErrors(getEnvironnement))
 //////////////////////////////////////////////////////////////////////////////////
 
-//Récuperer l'environnement d'une plante
-router.get('/environnement/:environnementId/plante/:planteId', catchErrors(getExpositionsPlante))
+//Modifier un envrionnement
+router.put('/environnement/:environnementId', catchErrors(updateEnvironnement))
 
-
-//Ajouter un environnement à une plante
-router.post('/environnement/:environnementId/plante/:planteId', catchErrors(ajouterEnvironnementPlante))
-
-
-//Modifer l'environnement d'une plante
-router.post('/environnement/:environnementId/plante/:planteId', catchErrors(modifierEnvironnementPlante))
-
-
-//Supprimer l'environnement d'une plante
-router.post('/environnement/:environnementId/plante/:planteId', catchErrors(supprimerEnvironnementPlante))
+//Supprimer un environnement
+router.delete('/environnement/:environnementId', catchErrors(deleteEnvironnement))
 
 export default router;

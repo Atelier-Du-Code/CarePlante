@@ -1,20 +1,23 @@
 import express from 'express'
 import { catchErrors } from '../helpers.js'
 
-import { getExpositions,ajouterExpositionPlante,  modifierExpositionPlante, supprimerExpositionPlante } from '../controllers/expositionController.js'
+import { getExpositions, getExposition, addExposition, updateExposition, deleteExposition } from '../controllers/expositionController.js'
 
 const router = express.Router()
 
-//Récupère l'exposition d'une plante
-router.get('/:planteId', catchErrors(getExpositions))
+//Récupérer toutes les expositions
+router.get('/', catchErrors(getExpositions))
 
-//Ajouter une association plante/exposition
-router.post('/:planteId/:expositionId', catchErrors(ajouterExpositionPlante))
+//Récupère une exposition
+router.get('/:expositionId', catchErrors(getExposition))
 
-//Modifier l'exposition pour une plante
-router.put('/:planteId/:expositionId', catchErrors(modifierExpositionPlante))
+//Ajouter une exposition
+router.post('/exposition', catchErrors(addExposition))
 
-//Supprimer l'exposition pour une plante
-router.delete('/:planteId/:expositionId', catchErrors(supprimerExpositionPlante))
+//Modifier une exposition
+router.put('/:expositionId', catchErrors(updateExposition))
+
+//Supprimer une exposition
+router.delete('/:expositionId', catchErrors(deleteExposition))
 
 export default router;
