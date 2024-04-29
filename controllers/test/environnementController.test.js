@@ -32,12 +32,22 @@ describe('environnementController', () => {
             expect(res.json).toHaveBeenCalledWith(environnements);
         });
 
-        it('Devrait renvoyer une erreur si la recherche échoue', async () => {
+        it('Devrait renvoyer une erreur 500 si la recherche échoue', async () => {
             const erreur = new Error('Erreur de recherche');
             EnvironnementModele.find.mockRejectedValueOnce(erreur);
   
             await getEnvironnements(req, res);
   
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({ message: "EnvironnementController - Une erreur s'est produite lors de la récupération des environnements"});
+        });
+
+        it('Devrait renvoyer une erreur 400 si il y a une erreur de syntaxe dans la requête', async () => {
+            const erreur = new Error('Erreur de syntaxe');
+            EnvironnementModele.find.mockRejectedValueOnce(erreur);
+    
+            await getEnvironnements(req, res);
+    
             expect(res.status).toHaveBeenCalledWith(500);
             expect(res.json).toHaveBeenCalledWith({ message: "EnvironnementController - Une erreur s'est produite lors de la récupération des environnements"});
         });

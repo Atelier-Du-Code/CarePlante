@@ -33,13 +33,13 @@ export const ajouterEnvironnementPlante = async (req, res) => {
             return res.status(404).json({ message: "La plante spécifiée n'existe pas." });
         }
 
-        //Vérifier si l'exposition existe
+        //Vérifier si l'environnement existe
         const environnementExistant = await EnvironnementModele.findOne({ environnement: environnementId });
         if (!environnementExistant) {
             return res.status(404).json({ message: "L'exposition spécifiée n'existe pas." });
         }
         
-        // Vérifier si l'associationde la plante et de l'exposition existent
+        // Vérifier si l'associationde la plante et de l'environnement existent
         const planteEnvironnementExistant = await PlanteEnvironnementModele.findOne({ plante: planteId, environnement: environnementId });
         if (planteEnvironnementExistant) {
             return res.status(400).json({ message: "Cette plante est déjà associée à cet environnement." });

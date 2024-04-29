@@ -7,6 +7,7 @@ import planteEnvironnementRoutes from './routes/planteEnvironnementRoutes.js';
 import environnementRoutes from './routes/environnementRoutes.js'
 import astuceRoutes from './routes/astuceRoutes.js';
 import expositionRoutes from './routes/expositionRoutes.js';
+import parasiteRoutes from './routes/parasiteRoutes.js';
 
 //Récupération des variables d'environnement
 import dotenv from 'dotenv'
@@ -30,7 +31,8 @@ app.use('/api/plantes', planteRoutes);
 app.use('/api/environnements', environnementRoutes);
 app.use('/api/astuces', astuceRoutes);
 app.use('/api/planteEnvironnement', planteEnvironnementRoutes);
-app.use('/api/exposition', expositionRoutes);
+app.use('/api/expositions', expositionRoutes);
+app.use('/api/parasites', parasiteRoutes );
 
 mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,

@@ -2,6 +2,8 @@ import PlanteModele from '../models/planteModele.js'
 
 
 export const addPlante = async (req, res) => {
+
+    
     const add = new PlanteModele(req.body);
     await add.save();
     res.json(add);      

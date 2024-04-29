@@ -14,49 +14,49 @@ const PlanteSchema = new mongoose.Schema({
     exposition: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Exposition',
-        required: true,
+        required: false,
     }],
     environnement: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Environnement',
-        required: true,
+        required: false,
     },
 
     temp_min: {
         type: Number, // Utilisation du type Number pour les entiers
-        required: true, 
+        required: false, 
     },
 
     temp_max: {
         type: Number, // Utilisation du type Number pour les entiers
-        required: true, 
+        required: false, 
     },
         
     frequence_arrosage: {
         type: String,
         required: true, 
         trim: true,
-        lowercase: true,
+        lowercase: false,
     },
     parasite: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Parasite',
-        required: true,
+        required: false,
     },
-    astuce: {
+    astuce: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Astuce',
-        required: true,
-    },
+        required: false,
+    }],
 
     interieur_exterieur: {
         type: String,
-        required: true,
+        required: false,
     },
 
     photo: {
         type: String,
-        required: true,
+        required: false,
     },
 
 })

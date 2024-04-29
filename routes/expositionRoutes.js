@@ -9,15 +9,15 @@ const router = express.Router()
 router.get('/', catchErrors(getExpositions))
 
 //Récupère une exposition
-router.get('/:expositionId', catchErrors(getExposition))
+router.get('/exposition/:expositionId', catchErrors(getExposition))
 
 //Ajouter une exposition
-router.post('/exposition', catchErrors(addExposition))
+router.post('/addExposition', catchErrors(addExposition))
 
 //Modifier une exposition
-router.put('/:expositionId', catchErrors(updateExposition))
+router.put('/exposition/:expositionId', catchErrors(updateExposition))
 
 //Supprimer une exposition
-router.delete('/:expositionId', catchErrors(deleteExposition))
+router.delete('/exposition/:expositionId', catchErrors(deleteExposition))
 
 export default router;

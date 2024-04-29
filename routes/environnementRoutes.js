@@ -4,17 +4,15 @@ import { getEnvironnements, getEnvironnement, addEnvironnement, updateEnvironnem
 
 const router = express.Router();
 
-//Postman OK
-//////////////////////////////////////////////////////////////////////////////////
 //Récupérer tous les environnements
 router.get('/', catchErrors(getEnvironnements))
+
+//Récupérer un environnement
+router.get('/environnement/:environnementId', catchErrors(getEnvironnement))
 
 //Ajouter un environnement
 router.post('/addEnvironnement', catchErrors(addEnvironnement))
 
-//Récupérer un environnement
-router.get('/environnement/:environnementId', catchErrors(getEnvironnement))
-//////////////////////////////////////////////////////////////////////////////////
 
 //Modifier un envrionnement
 router.put('/environnement/:environnementId', catchErrors(updateEnvironnement))

@@ -14,7 +14,7 @@ const AstuceSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
     },
-    // Ajoutez d'autres champs selon les besoins
+   
 });
 
 const AstuceModele = mongoose.model('Astuce', AstuceSchema);

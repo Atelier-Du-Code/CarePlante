@@ -1,4 +1,5 @@
 import ParasiteModele from '../models/parasiteModele.js';
+import { MongooseError } from 'mongoose';
 
 //Récupérer tous les parasites
 export const getParasites = async (_, res) => {   
@@ -24,7 +25,7 @@ export const getParasite = async (req, res) => {
     res.send(parasite)
     }catch(erreur){
         
-        res.status(500).json({ message: "EnvironnementController - Une erreur s'est produite lors de la récupération du parasite" });
+        res.status(500).json({ message: "ParasiteController - Une erreur s'est produite lors de la récupération du parasite" });
    
     }
 }
@@ -60,7 +61,50 @@ export const addParasite = async (req, res) => {
 }
 
 //Modifier un parasite
-export const updateParasite = async (req, res) =>{}
+export const updateParasite = async (req, res) =>{
+    const { parasiteId } = req.params;
+    const { nom } = req.body;
+
+    try {
+        const parasiteExistant = await ParasiteModele.findById(parasiteId);
+        if (!parasiteExistant) {
+            return res.status(404).json({ message: "Le parasite spécifié n'existe pas." });
+        }
+
+        parasiteExistant.nom = nom;
+        await parasiteExistant.save();
+
+        return res.status(200).json({ message: "Le parasite a été modifié avec succès." });
+    } catch (erreur) {
+        console.error("Une erreur s'est produite lors de la modification du parasite :", erreur);
+        let messageErreur = "Une erreur s'est produite lors de la modification du parasite.";
+        if (erreur instanceof MongooseError.ValidationError) {
+            messageErreur = "Les données fournies sont invalides.";
+        }
+        return res.status(500).json({ message: messageErreur });
+    }
+}
 
 //Supprimer un parasite
-export const deleteParasite = async (req, res) =>{}
+export const deleteParasite = async (req, res) =>{
+
+    const { parasiteId } = req.params;
+
+    try {
+        // Vérifier si le parasite existe
+        const parasiteExistant = await ParasiteModele.findById(parasiteId);
+        if (!parasiteExistant) {
+            return res.status(404).json({ message: "Le parasite spécifié n'existe pas." });
+        }
+
+        // Supprimer le parasite
+        await ParasiteModele.findByIdAndDelete(parasiteId);
+
+        // Renvoyer une réponse de succès
+        res.status(200).json({ message: "Le parasite a été supprimé avec succès." });
+    } catch (erreur) {
+        console.error("Une erreur s'est produite lors de la suppression du parasite :", erreur);
+        // Envoyer une réponse d'erreur
+        res.status(500).json({ message: "Une erreur s'est produite lors de la suppression du parasite." });
+    }
+}
